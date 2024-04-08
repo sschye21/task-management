@@ -13,7 +13,7 @@ services:
 
   database:
     image: postgres
-    container_name: postgres
+    container_name: checkbox-postgres 
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql

@@ -5,16 +5,16 @@ Project template for Checkbox's Tech Challenge, a React client and Express/Node 
 ## Table of contents <!-- omit in toc -->
 
 - [Project scope](#project-scope)
-  - [Your task](#your-task)
-  - [Out of scope](#out-of-scope)
-  - [What we’ll be looking for](#what-well-be-looking-for)
+    - [Your task](#your-task)
+    - [Out of scope](#out-of-scope)
+    - [What we’ll be looking for](#what-well-be-looking-for)
 - [Getting started](#getting-started)
-  - [Development server](#development-server)
-    - [Prerequisites](#prerequisites)
-    - [Installing and running](#installing-and-running)
-  - [Docker Compose](#docker-compose)
-    - [Prerequisites](#prerequisites-1)
-    - [Installing and running](#installing-and-running-1)
+    - [Development server](#development-server)
+        - [Prerequisites](#prerequisites)
+        - [Installing and running](#installing-and-running)
+    - [Docker Compose](#docker-compose)
+        - [Prerequisites](#prerequisites-1)
+        - [Installing and running](#installing-and-running-1)
 - [Database configuration](#database-configuration)
 
 ## Project scope
@@ -26,21 +26,20 @@ together at the following set of user stories.
 
 - User should be able to create a new task, including the following
   fields
-
-  - Name
-  - Description
-  - Due date
+    - Name
+    - Description
+    - Due date
 
 - User should be able to view all tasks created in a list view, showing
   all the following details
-  - Name
-  - Description
-  - Due date
-  - Create date
-  - Status
-    - Not urgent
-    - Due soon (Due date is within 7 days)
-    - Overdue
+    - Name
+    - Description
+    - Due date
+    - Create date
+    - Status
+        - Not urgent
+        - Due soon (Due date is within 7 days)
+        - Overdue
 - User should be able to edit task name, description and due date
 - User should be able to search based on task name
 

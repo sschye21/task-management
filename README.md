@@ -4,6 +4,10 @@ Project template for Checkbox's Tech Challenge, a React client and Express/Node 
 
 ## Table of contents <!-- omit in toc -->
 
+- [Project scope](#project-scope)
+  - [Your task](#your-task)
+  - [Out of scope](#out-of-scope)
+  - [What we’ll be looking for](#what-well-be-looking-for)
 - [Getting started](#getting-started)
   - [Development server](#development-server)
     - [Prerequisites](#prerequisites)
@@ -12,6 +16,59 @@ Project template for Checkbox's Tech Challenge, a React client and Express/Node 
     - [Prerequisites](#prerequisites-1)
     - [Installing and running](#installing-and-running-1)
 - [Database configuration](#database-configuration)
+
+## Project scope
+
+You’ve been assigned to a team working on building out a new task
+management software. Over the course of a few days, many customer
+interviews & user mapping flows, you and your product manager arrive
+together at the following set of user stories.
+
+- User should be able to create a new task, including the following
+  fields
+
+  - Name
+  - Description
+  - Due date
+
+- User should be able to view all tasks created in a list view, showing
+  all the following details
+  - Name
+  - Description
+  - Due date
+  - Create date
+  - Status
+    - Not urgent
+    - Due soon (Due date is within 7 days)
+    - Overdue
+- User should be able to edit task name, description and due date
+- User should be able to search based on task name
+
+### Your task
+
+- Create a working solution that showcases the above user
+  stories using the project template provided in this repository
+- Please articulate and explain any design decisions you made in your
+  readme.
+- Feel free to use any libraries to help you
+- Don’t worry too much about styling it perfectly!
+- List any further improvements to your code that you would’ve made if
+  you had time
+
+### Out of scope
+
+- Do not implement any authentication or authorisation
+- Do not implement any user management.
+
+### What we’ll be looking for
+
+- Clean, manageable & well structured code
+- Production quality code
+- Git maturity. Please show your full git commit history (rather than
+  pushing everything up in one commit).
+- Understanding & effective implementation of fundamental software development principles
+- Demonstrated understanding of other tasks you would do if you had time
+  & how you would implement them
 
 ## Getting started
 

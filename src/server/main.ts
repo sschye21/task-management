@@ -3,7 +3,7 @@ import ViteExpress from 'vite-express';
 
 const app = express();
 
-// Example route, please delete this when you implement your own routes
+// TODO: Example route, please delete this when you implement your own routes
 app.get('/hello', (_, res) => {
   res.json({ result: 'Hello there!' });
 });

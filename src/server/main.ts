@@ -9,8 +9,8 @@ app.use(express.json());
 
 const randomId = () => uuidv4();
 
+// Creates a New Task
 app.post("/new/v1", async (req, res) => {
-  console.log(req.body)
   const { name, description, dueDate, priority } = req.body;
   const id = randomId();
   const result = await pool.query(
@@ -22,21 +22,19 @@ app.post("/new/v1", async (req, res) => {
   
 })
 
-app.get("/tasks/v1/:name/:limit", async (req, res) => {
-  const { name, limit } = req.params;
-  
-  let nameLike = '%'
-  if (name != "") {
-    nameLike = name + nameLike
-  }
+// Get all tasks + limit + search
+app.get("/tasks/v1", async (req, res) => {
+  const { search } = req.query;
 
   const result = await pool.query(
     SQL_STATEMENTS.selectAllTasks,
-    [nameLike, limit]
+    [search]
   );
+
   res.status(200).send(result.rows);
 })
 
+// Get a single task
 app.patch("/tasks/v1/:id", async (req, res) => {
   const { id } = req.params;
   const { name, description, dueDate, priority } = req.body;

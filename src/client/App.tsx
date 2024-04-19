@@ -9,6 +9,7 @@ const App = () => {
       const response = await fetch('/hello');
       const { result } = await response.json();
       setMessage(result);
+      console.log(result)
     })();
   });
 

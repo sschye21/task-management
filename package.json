@@ -12,7 +12,9 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@types/pg": "^8.11.5",
     "express": "^4.18.2",
+    "pg": "^8.11.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vite-express": "*"

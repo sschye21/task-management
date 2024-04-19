@@ -1,11 +1,13 @@
 import express from 'express';
 import ViteExpress from 'vite-express';
+import pool from './db.js';
 
 const app = express();
 
 // TODO: Example route, please delete this when you implement your own routes
 app.get('/hello', (_, res) => {
-  res.json({ result: 'Hello there!' });
+  const result = pool.query('select * from tasks')
+  res.json({ result: result });
 });
 
 ViteExpress.config({

@@ -4,7 +4,6 @@ import TaskManagement from './components/TaskManagement';
 const App = () => {
   return (
     <TaskManagement />
-
   )
 };
 

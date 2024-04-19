@@ -20,6 +20,15 @@ const Modal = (props: any) => {
         confirmButton()
         closeModal()
     }
+
+    const currentDate = new Date();
+
+    // Get the number of milliseconds in 7 days
+    const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000;
+
+    // Add 7 days in milliseconds to the current date
+    const futureDate = new Date(currentDate.getTime() + sevenDaysInMilliseconds);
+
     return (
         <>
             {/* Opacity background when modal is open */}
@@ -42,13 +51,18 @@ const Modal = (props: any) => {
                             <input className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2" onChange={e => setDescription(e.target.value)} value={description} required/>
 
                             <label className="block text-sm font-medium text-gray-700">Due Date</label>
-                            <input className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2" type="date" onChange={e => setDueDate(e.target.value)} value={dueDate} required/>
+                            <input className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2" type="date" min={new Date().toISOString().split('T')[0]} onChange={e => setDueDate(e.target.value)} value={dueDate} required/>
 
                             <label className="block text-sm font-medium text-gray-700">Task Priority</label>
                             <select className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2" required onChange={e => setPriority(e.target.value)} value={priority}>
-                                <option disabled selected value=""> -- select an option -- </option>
-                                <option>Not Urgent</option>
-                                <option>Due Soon</option>
+                                {new Date(dueDate) <= futureDate ? 
+                                    <option>Urgent</option> : 
+                                <>
+                                    <option disabled selected value=""> -- select an option -- </option>
+                                    <option>Not Urgent</option>
+                                    <option>Due Soon</option>
+                                </>
+                            }
                             </select>
                             <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                                 <input

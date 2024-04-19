@@ -33,8 +33,6 @@ const Task = (props: any) => {
         .then(() => getTasks())
     }
 
-    console.log(name, description, dueDate, priority, id)
-
     return (
         <div key={id} className="border p-4 my-4 bg-gray-200 border-solid rounded-md">
             <div className="flex flex-row justify-between">

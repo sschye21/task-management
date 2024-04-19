@@ -20,8 +20,6 @@ const NewTask = (props: any) => {
     const openModal = () => setOpenModal(true);
     const closeModal = () => setOpenModal(false);
 
-    console.log(priority)
-
     return (
         <>
             <button

@@ -21,7 +21,6 @@ const TaskManagement = () => {
     const getTasks = () => {
         getAllTasks(searchName)
         .then(response => {
-            console.log(response?.data)
             setTasks(response?.data)
             setName('')
             setDescription('')

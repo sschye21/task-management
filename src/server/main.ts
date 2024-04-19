@@ -13,13 +13,19 @@ const randomId = () => uuidv4();
 app.post("/new/v1", async (req, res) => {
   const { name, description, dueDate, priority } = req.body;
   const id = randomId();
-  const result = await pool.query(
+  
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero for single-digit months
+  const day = String(date.getDate()).padStart(2, '0');
+  const formattedDate = `${year}-${month}-${day}`;
+  
+  await pool.query(
     SQL_STATEMENTS.insertTask, 
-    [id, name, description, dueDate, new Date(), priority]);
-  
-  console.log(result)
-  res.status(200).send("Success")
-  
+    [id, name, description, dueDate, formattedDate, priority])
+    .catch(() => res.status(404).send("Error"))
+    .then(() => {
+      res.status(200).send("Success")});
 })
 
 // Get all tasks + limit + search
@@ -30,19 +36,18 @@ app.get("/tasks/v1", async (req, res) => {
     SQL_STATEMENTS.selectAllTasks,
     [search]
   );
-
   res.status(200).send(result.rows);
 })
 
-// Get a single task
+// Edit a single task
 app.patch("/tasks/v1/:id", async (req, res) => {
   const { id } = req.params;
   const { name, description, dueDate, priority } = req.body;
-  const result = await pool.query(
+  await pool.query(
     SQL_STATEMENTS.updateTask,
-    [name, description, dueDate, priority, id]
-  );
-  res.status(200).send("Success");
+    [name, description, dueDate, priority, id])
+    .catch(() => res.status(404).send("Error"))
+    .then(() => res.status(200).send("Success"));;
 })
 
 ViteExpress.config({

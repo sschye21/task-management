@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
+import './index.css'
+import TaskManagement from './components/TaskManagement';
 
 const App = () => {
-  // TODO: example api call, please delete this when you implement your own components/calls
-  const [message, setMessage] = useState<string>();
+  return (
+    <TaskManagement />
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch('/hello');
-      const { result } = await response.json();
-      setMessage(result);
-      console.log(result)
-    })();
-  });
-
-  return <p>{message}</p>;
+  )
 };
 
 export { App };

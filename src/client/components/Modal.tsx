@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 const Modal = (props: any) => {
     const { 
@@ -28,7 +28,7 @@ const Modal = (props: any) => {
     // Add 7 days in milliseconds to the current date
     const futureDate = new Date(currentDate.getTime() + sevenDaysInMilliseconds);
 
-    const dateChange = (e: any) => {
+    const dateChange = (e: ChangeEvent<HTMLInputElement>) => {
         setDueDate(e.target.value)
         new Date(e.target.value) <= futureDate ? 
             setPriority("Due Soon") :

@@ -17,7 +17,7 @@ const Task = (props: any) => {
         setEditDescription(description)
         setEditDueDate(dueDate)
         setEditPriority(priority)
-    }, [])
+    }, [id])
 
     const openEditModal = () => setOpenModal(true)
     const closeModal = () => setOpenModal(false)
@@ -30,7 +30,7 @@ const Task = (props: any) => {
             priority: editPriority,
             id: id
         })
-        getTasks()
+        .then(() => getTasks())
     }
 
     console.log(name, description, dueDate, priority, id)

@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-import { getAllTasks } from "../services/task.service.js";
 import Search from "./Search.js";
 import Task from "./Task.js";
-import { error } from "console";
 
 const TaskList = (props: any) => {
 

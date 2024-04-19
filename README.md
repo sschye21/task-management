@@ -134,3 +134,14 @@ FRONTEND TASKS
 5. filtering of search bar
 
 DESIGN DECISIONS:
+- Tailwind CSS - extremely simple and easy to use and saves time by not having to create own styles for components
+- Seperated services from components to ensure that components in client folder are easy and readable
+- Data layer for server to seperate the database and sql statements form the API calls
+
+Improvements:
+- Would improve the styling of the client to make it more visually appealing
+- Investigate ORM
+
+Other Tasks:
+- Deleting a task - implement through a simple DELETE API call that would remove the task
+- Sorting tasks by due date, name

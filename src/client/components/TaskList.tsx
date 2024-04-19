@@ -19,6 +19,7 @@ const TaskList = (props: any) => {
                         priority={task.status}
                         id={task.id}
                         getTasks={getTasks}
+                        createdDate={task.createdate.split('T')[0]}
                     />
                 )
             })}

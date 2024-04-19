@@ -9,7 +9,6 @@ const Modal = (props: any) => {
         setDescription,
         dueDate,
         setDueDate,
-        priority,
         setPriority,
         confirmButton,
         edit
@@ -28,6 +27,15 @@ const Modal = (props: any) => {
 
     // Add 7 days in milliseconds to the current date
     const futureDate = new Date(currentDate.getTime() + sevenDaysInMilliseconds);
+
+    const dateChange = (e: any) => {
+        setDueDate(e.target.value)
+        new Date(e.target.value) <= futureDate ? 
+            setPriority("Due Soon") :
+            new Date(e.target.value) < currentDate ?
+            setPriority("Overdue")
+            : setPriority("Not Urgent")
+    }
 
     return (
         <>
@@ -51,19 +59,26 @@ const Modal = (props: any) => {
                             <input className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2" onChange={e => setDescription(e.target.value)} value={description} required/>
 
                             <label className="block text-sm font-medium text-gray-700">Due Date</label>
-                            <input className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2" type="date" min={new Date().toISOString().split('T')[0]} onChange={e => setDueDate(e.target.value)} value={dueDate} required/>
+                            <input 
+                                className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2" 
+                                type="date" 
+                                min={new Date().toISOString().split('T')[0]} 
+                                onChange={e => dateChange(e)} 
+                                value={dueDate} 
+                                required
+                            />
 
                             <label className="block text-sm font-medium text-gray-700">Task Priority</label>
-                            <select className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2" required onChange={e => setPriority(e.target.value)} value={priority}>
+                            <div  
+                                className="border border-black rounded-sm w-11/12 p-1 mb-4 mt-2 bg-gray-300" 
+                            >
                                 {new Date(dueDate) <= futureDate ? 
-                                    <option>Urgent</option> : 
-                                <>
-                                    <option disabled selected value=""> -- select an option -- </option>
-                                    <option>Not Urgent</option>
-                                    <option>Due Soon</option>
-                                </>
-                            }
-                            </select>
+                                        "Due Soon" :
+                                        new Date(dueDate) < currentDate ?
+                                        "Overdue"
+                                        : "Not Urgent"
+                                }
+                            </div>
                             <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                                 <input
                                     className="bg-green-400 text-black active:bg-green-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg focus:outline-none ease-linear transition-all duration-150 cursor-pointer"

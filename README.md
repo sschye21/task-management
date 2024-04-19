@@ -111,3 +111,26 @@ Open a command line of your preference and do the following:
 
 The challenge assumes you will be storing and retrieving records from a database. The project contains an initial configuration for [PostgreSQL](https://www.postgresql.org/) to speed things up but you might pick your system of choice if you prefer. Either way, as mentioned before, the application should work as expected when running Docker Compose.
 In case you are not using an ORM to manage and connect to the database and are sticking to the project's setup, you should populate the `init.sql` schema creation script at the root. It is run automatically as part of `docker compose up` the first time it gets executed to create your table(s).
+
+BACKEND TASKS / API Contract:
+
+1. POST /new/v1 -> user should be able to create a new task
+    req: body: { name, description, dueDate }, params: null
+    res: 200 Status OK
+
+2. GET /tasks/v1?search='xyz' -> user should be able to view all tasks created in a list view, showing all the following details
+    req: body: null, params: { name, limit }, query: { search }
+    res: { name, description, dueDate, createDate, status: { 'Due Soon', 'Urgent', overDue } } & 200 Status OK
+
+3. PATCH /tasks/v1/:id -> user should be able to edit task name, description and due date
+    req: { name, description, dueDate, priority }, params: { id }
+    res: 200 Status OK
+
+FRONTEND TASKS
+1. Implement task creation
+2. implement list view
+3. edit button of each task
+4. implement search bar
+5. filtering of search bar
+
+DESIGN DECISIONS:

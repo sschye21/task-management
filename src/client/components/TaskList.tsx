@@ -6,7 +6,7 @@ import { error } from "console";
 
 const TaskList = (props: any) => {
 
-    const { tasks, setSearchName } = props;
+    const { tasks, setSearchName, getTasks } = props;
 
     return (
         <>
@@ -18,9 +18,10 @@ const TaskList = (props: any) => {
                     <Task 
                         name={task.name}
                         description={task.description}
-                        dueDate={task.dueDate}
-                        priority={task.priority}
+                        dueDate={task.duedate.split('T')[0]}
+                        priority={task.status}
                         id={task.id}
+                        getTasks={getTasks}
                     />
                 )
             })}

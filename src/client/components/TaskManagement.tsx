@@ -20,10 +20,13 @@ const TaskManagement = () => {
 
     const getTasks = () => {
         getAllTasks(searchName)
-        .catch(error => console.log(error))
         .then(response => {
             console.log(response?.data)
             setTasks(response?.data)
+            setName('')
+            setDescription('')
+            setDueDate('')
+            setPriority('')
         })
     }
 
@@ -50,6 +53,7 @@ const TaskManagement = () => {
             <TaskList 
                 tasks={tasks}
                 setSearchName={setSearchName}
+                getTasks={getTasks}
             />
         </div>
     )

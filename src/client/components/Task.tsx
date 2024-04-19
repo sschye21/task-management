@@ -1,20 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import { editTask } from "../services/task.service";
 
 const Task = (props: any) => {
 
-    const { id, name, description, dueDate, priority } = props
+    const { id, name, description, dueDate, priority, getTasks } = props
 
     const [open, setOpenModal] = useState(false)
-    const [editName, setEditName] = useState(name)
-    const [editDescription, setEditDescription] = useState(description)
-    const [editDueDate, setEditDueDate] = useState(dueDate)
-    const [editPriority, setEditPriority] = useState(priority)
+    const [editName, setEditName] = useState('')
+    const [editDescription, setEditDescription] = useState('')
+    const [editDueDate, setEditDueDate] = useState('')
+    const [editPriority, setEditPriority] = useState('')
 
-    const openEditModal = () => {
-        setOpenModal(true)
-    }
+    useEffect(() => {
+        setEditName(name)
+        setEditDescription(description)
+        setEditDueDate(dueDate)
+        setEditPriority(priority)
+    }, [])
+
+    const openEditModal = () => setOpenModal(true)
+    const closeModal = () => setOpenModal(false)
 
     const confirmChanges = (id: string) => {
         editTask({
@@ -24,10 +30,10 @@ const Task = (props: any) => {
             priority: editPriority,
             id: id
         })
-        .then(response => {
-            console.log(response?.data)
-        })
+        getTasks()
     }
+
+    console.log(name, description, dueDate, priority, id)
 
     return (
         <div key={id} className="border p-4 my-4 bg-gray-200 border-solid rounded-md">
@@ -58,6 +64,7 @@ const Task = (props: any) => {
                     setPriority={setEditPriority}
                     confirmButton={() => confirmChanges(id)}
                     edit={true}
+                    closeModal={closeModal}
                 />
             }
         </div>
